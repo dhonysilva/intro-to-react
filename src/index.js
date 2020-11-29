@@ -141,12 +141,8 @@ function Square(props) {
   
   // ========================================
 
-  function formatDate(date) {
+  /* function formatDate(date) {
     return date.toLocaleDateString();
-  }
-
-  function Welcome(props) {
-    return <h1>Olá { props.name}</h1>;
   }
 
   function Avatar(props) {
@@ -189,29 +185,55 @@ function Square(props) {
       name: 'Hello Kitty',
       avatarUrl: 'https://placekitten.com/g/64/64',
     },
-  };
+  }; */
+
+  function Welcome(props) {
+    return <h1>Olá { props.name}</h1>;
+  }
+
+  class Clock extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {date: new Date()};
+    }
+
+    componentDidMount() {
+      this.timerId = setInterval(
+        () => this.tick(), 1000
+      );
+    }
+
+    componentDidUnmount() {
+      clearInterval(this.timerId);
+    }
+
+    tick() {
+      this.setState({
+        date: new Date()
+      });
+    }
+
+    render() {
+      return (
+        <div>
+          <h2>It is {this.state.date.toLocaleTimeString()}</h2>
+        </div>
+        );
+      }
+  }
 
   function App() {
     return (
       <div>
-        <Welcome name="Sara" />
-        <Welcome name="Cahal" />
-        <Welcome name="Edit" />
-        <Comment
-          date={comment.date}
-          text={comment.text}
-          author={comment.author}
-        />
+        <Welcome name="Dhony" />
+        <Clock />
       </div>
     );
   }
   
 
   ReactDOM.render(
-    <App />,
-    
-    /* <Game />, */
-    
+    <App />,    
     document.getElementById('root')
   );
   
