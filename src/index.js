@@ -141,8 +141,33 @@ function Square(props) {
   
   // ========================================
   
+function formatName(user){
+  return user.firstName + ' ' + user.lastName;
+}
+
+function getGreeting(user) {
+  if (user) {
+    return <h1>Olá {formatName(user)}!</h1>;
+  }
+  return <h1>Olá Estranho.</h1>;
+}
+
+const user = {
+  firstName: 'Dhony',
+  lastName: 'Silva'
+};
+  
+  const element = React.createElement (
+    'h1',
+    {className: 'greeting'},
+    'hello world!'
+  );
+
   ReactDOM.render(
-    <Game />,
+    element,
+    
+    /* <Game />, */
+    
     document.getElementById('root')
   );
   
