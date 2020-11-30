@@ -191,6 +191,10 @@ function Square(props) {
     return <h1>Olá { props.name}</h1>;
   }
 
+  function FormattedDate(props) {
+    return <h2>It is {props.date.toLocaleTimeString()}.</h2>;
+  }
+
   class Clock extends React.Component {
     constructor(props) {
       super(props);
@@ -216,16 +220,19 @@ function Square(props) {
     render() {
       return (
         <div>
-          <h2>It is {this.state.date.toLocaleTimeString()}</h2>
+          <FormattedDate date={this.state.date} />
         </div>
         );
       }
   }
 
+  
   function App() {
     return (
       <div>
         <Welcome name="Dhony" />
+        <Clock />
+        <Clock />
         <Clock />
       </div>
     );
